@@ -11,6 +11,7 @@ function createWindow() {
     minWidth: 800,
     minHeight: 600,
     show: false,
+    frame: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -26,6 +27,34 @@ function createWindow() {
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
+  })
+
+  mainWindow.on('maximize', () => {
+    mainWindow.webContents.send('window-maximized')
+  })
+
+  mainWindow.on('unmaximize', () => {
+    mainWindow.webContents.send('window-unmaximized')
+  })
+
+  ipcMain.on('maximize-window', () => {
+    mainWindow.maximize()
+  })
+
+  ipcMain.on('unmaximize-window', () => {
+    mainWindow.unmaximize()
+  })
+
+  ipcMain.on('check-window-state', (event) => {
+    event.sender.send(mainWindow.isMaximized() ? 'window-maximized' : 'window-unmaximized')
+  })
+
+  ipcMain.on('minimize-window', () => {
+    mainWindow.minimize()
+  })
+
+  ipcMain.on('close-window', () => {
+    mainWindow.close()
   })
 
   // HMR for renderer base on electron-vite cli.
@@ -71,6 +100,3 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
