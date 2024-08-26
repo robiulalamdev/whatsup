@@ -53,7 +53,7 @@ const InboxChatsContainer = () => {
   }
   return (
     <div
-      className="flex  border-r-[1px] border-black"
+      className="flex  border-r-[1px] border-gray-900"
       style={{ width: `${sidebarWidth}px`, minWidth: '260px', maxWidth: '800px' }}
     >
       <div className="flex-1">
