@@ -1,30 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import './base.css';
 
+:root {
+  background-color: #2c2c2c !important;
+  overflow: hidden;
+}
+
 body {
-  user-select: none;
+  user-select: none !important;
 }
 
-.header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px;
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  -webkit-app-region: drag; /* Makes the header draggable */
+.DRAG_ON {
+  -webkit-app-region: drag !important;
 }
 
-.header button {
-  margin-left: 5px;
-  padding: 5px;
-  font-size: 16px;
-  border: none;
-  background-color: #ecf0f1;
-  color: #2c3e50;
+.DRAG_OFF {
   cursor: pointer;
-  -webkit-app-region: no-drag; /* Prevents dragging on buttons */
+  -webkit-app-region: no-drag !important;
 }
 
-.header button:hover {
-  background-color: #bdc3c7;
+.scroll_off::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+.scroll_off::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 0px;
+}
+
+.scroll_off::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scroll_off {
+  scrollbar-width: none !important;
+  scrollbar-color: transparent transparent;
+}
+
+.oneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-align: left;
+}
+
+.twoLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: left;
+}
+
+.all_break {
+  word-break: break-word !important;
 }

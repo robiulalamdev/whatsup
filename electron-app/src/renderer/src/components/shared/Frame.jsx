@@ -1,6 +1,13 @@
 /* eslint-disable prettier/prettier */
 
 import { useState, useEffect } from 'react'
+import logo from '../../assets/brand/whatsapp.png'
+import {
+  IFrame_Close,
+  IFrame_Maximize,
+  IFrame_Minimize,
+  IFrame_UnMaximize
+} from '../../utils/icons/global'
 
 const Frame = () => {
   const [isMaximized, setIsMaximized] = useState(false)
@@ -42,24 +49,31 @@ const Frame = () => {
   }
 
   return (
-    <div className="header">
-      <button onClick={minimizeWindow}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="size-6"
-          width={32}
+    <div className="DRAG_ON px-[12px] min-h-[42px] max-h-[42px] flex justify-between items-center">
+      <div className="flex items-center gap-x-[8px]">
+        <img src={logo} alt="" className="w-[24px] h-[24px] object-contain" />
+        <h1 className="text-white text-[11px]">WhatsApp</h1>
+      </div>
+      <div className="flex justify-end items-center gap-x-[12px] h-full">
+        <button
+          onClick={minimizeWindow}
+          className="DRAG_OFF text-gray-200 hover:bg-[#2D2D2D] cursor-pointer h-[32px] w-[35px] flex justify-center items-center rounded-[5px]"
         >
-          <path
-            fillRule="evenodd"
-            d="M4.25 12a.75.75 0 0 1 .75-.75h14a.75.75 0 0 1 0 1.5H5a.75.75 0 0 1-.75-.75Z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-      <button onClick={toggleMaximizeWindow}>{isMaximized ? '🗗' : '[]'}</button>
-      <button onClick={closeWindow}>X</button>
+          {IFrame_Minimize}
+        </button>
+        <button
+          onClick={toggleMaximizeWindow}
+          className="DRAG_OFF text-gray-200 hover:bg-[#2D2D2D] cursor-pointer h-[32px] w-[35px] flex justify-center items-center rounded-[5px]"
+        >
+          {isMaximized ? IFrame_Maximize : IFrame_UnMaximize}
+        </button>
+        <button
+          onClick={closeWindow}
+          className="DRAG_OFF text-gray-200 hover:bg-[#2D2D2D] cursor-pointer h-[32px] w-[35px] flex justify-center items-center rounded-[5px]"
+        >
+          {IFrame_Close}
+        </button>
+      </div>
     </div>
   )
 }

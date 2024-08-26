@@ -1,9 +1,10 @@
-import Frame from './components/shared/Frame'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routes/routes'
 
 function App() {
   return (
     <>
-      <Frame />
+      <RouterProvider router={router} />
     </>
   )
 }
