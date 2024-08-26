@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import React from 'react'
 import bg from '../../assets/brand/whatsapp-gray.png'
 
 const InboxEmptyMessageArea = () => {
